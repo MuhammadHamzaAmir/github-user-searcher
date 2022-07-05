@@ -1,5 +1,6 @@
 import {useEffect,useState} from 'react';
 import Loading from '../layout/Loading';
+import UserItem from './UserItem';
 
 function UserResults() {
 
@@ -30,7 +31,7 @@ function UserResults() {
 
             <div className='grid grid-cols-1 gap xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 text-center'>
                 {users.map((user)=>(
-                    <h3 key={user.id}>{user.login}</h3>
+                    <UserItem key={user.id} user={user}></UserItem>
                 ))}
             </div>
     )
