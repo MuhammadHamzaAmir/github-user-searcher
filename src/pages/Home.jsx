@@ -1,8 +1,10 @@
-
+import UserResults from "../components/user/UserResults"
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <UserResults/>
+    </div>
   )
 }
 
