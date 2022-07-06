@@ -2,7 +2,7 @@ import { useContext,useEffect } from 'react';
 import GithubContext from '../context/github/GithubContext';
 import {useParams} from  'react-router-dom';
 import {Link} from 'react-router-dom';
-import {FaUsers,FaCodepen,FaStore,FaUserFriends} from 'react-icons/fa';
+import {FaUsers,FaCodepen,FaStore,FaUserFriends,FaAngleLeft,FaAngleRight} from 'react-icons/fa';
 import Loading from '../components/layout/Loading'; 
 
 function User() {
@@ -87,7 +87,8 @@ function User() {
                         </div>
                     </div>
                 </div>
-
+        
+                {/* @TODO - Make div scrollable on mouse click  */}
                 <div className="w-full py-5 mb-6 rouded-lg shadow-md stats bg-base-100">
                     <div className="stat">
                         <div className="stat-figure text-secondary">
