@@ -57,8 +57,38 @@ function User() {
                                 </a>
                             </div>
                         </div>
+                        <div className="bg-base-100 stats w-full rounded-lg shadow-md">
+                            {user.location && (
+                                <div className="stat">
+                                    <div className="stat-title text-md">Location</div>
+                                    <div className="text-lg stat-value">{user.location}</div>
+                                </div>
+                            )}
+                            {user.blog && (
+                                <div className="stat">
+                                    <div className="stat-title text-md">Website</div>
+                                    <div className="text-lg stat-value">
+                                        <a href={user.blog} target="_blank" rel="noreferrer">
+                                            {user.blog}
+                                        </a>
+                                    </div>
+                                </div>
+                            )}
+                            {user.twitter_username && (
+                                <div className="stat">
+                                    <div className="stat-title text-md">Twitter</div>
+                                    <div className="text-lg stat-value">
+                                        <a href={`https://twitter.com/${user.twitter_username}`} target="_blank" rel="noreferrer">
+                                            {user.twitter_username}
+                                        </a>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
+
+                
             </div>
         )
     }
