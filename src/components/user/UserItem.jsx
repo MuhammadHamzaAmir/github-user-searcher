@@ -15,7 +15,7 @@ function UserItem(props) {
                 </div>
                 <div>
                     <h2 className='card-title'>{props.user.login}</h2>
-                    <Link to={`/users/${props.user.login}`} className='text-opacity-50 text-base-content '>Visit Profile</Link>
+                    <Link to={`/user/${props.user.login}`} className='text-opacity-50 text-base-content '>Visit Profile</Link>
                 </div>
             </div>
         </div>
