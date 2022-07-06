@@ -18,11 +18,15 @@ export const GithubProvider = ({ children }) => {
 
 
     //get initial users (testing purposes)
-    const fetchUsers = async () => {
+    const searchUsers = async (text) => {
 
         setLoading();
 
-        const response = await fetch(`${GITHUB_URL}/users`,{
+        const params = new URLSearchParams({
+            q:text,
+        })
+
+        const response = await fetch(`${GITHUB_URL}/search/users?${params}`,{
             headers: {
                 Authorization: `token ${GITHUB_TOKEN}`
             }
@@ -32,7 +36,7 @@ export const GithubProvider = ({ children }) => {
 
         dispatch({
             type:"GET_USERS",
-            payload:data,
+            payload:data.items,
         });
     }
 
@@ -42,8 +46,15 @@ export const GithubProvider = ({ children }) => {
         });
     }
 
+    const clearUsers = () => {
+        dispatch({
+            type:"CLEAR_USERS",
+            payload:[]
+        });
+    }
+
     return (
-    <GithubContext.Provider value={{users:state.users,loading:state.loading,fetchUsers}}>
+    <GithubContext.Provider value={{users:state.users,loading:state.loading,searchUsers,clearUsers}}>
         {children}
     </GithubContext.Provider>
     )
