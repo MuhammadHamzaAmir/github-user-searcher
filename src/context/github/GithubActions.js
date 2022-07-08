@@ -22,3 +22,59 @@ export const searchUsers = async (text) => {
 
         return data
     }
+
+    //get a user
+export const getUser = async (login) => {
+
+        const response = await fetch(`${GITHUB_URL}/users/${login}`,{
+            headers: {
+                Authorization: `token ${GITHUB_TOKEN}`
+            }
+        });
+        
+        if (response.status === 404){
+            window.location = "/nonfound";
+            return {};
+        }
+        else{
+            const data = await response.json();
+            
+            return data;
+        
+        
+        }
+
+    }
+
+    //get user repos
+export const getUserRepos = async (login) => {
+
+        const params = new URLSearchParams({
+            sort: `created`,
+            per_page : 10,
+        })
+
+        const response = await fetch(`${GITHUB_URL}/users/${login}/repos?${params}`,{
+            headers: {
+                Authorization: `token ${GITHUB_TOKEN}`
+            }
+        });
+    
+        const data = await response.json();
+
+        return data;
+    }
+
+        //get org repos
+export const getOrgsRepos = async (login) => {
+
+        const response = await fetch(`${GITHUB_URL}/orgs/${login}/repos`,{
+            headers: {
+                Authorization: `token ${GITHUB_TOKEN}`
+            }
+        });
+    
+        const data = await response.json();
+
+        return data;
+    }
