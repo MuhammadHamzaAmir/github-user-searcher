@@ -2,7 +2,7 @@ import { useContext,useEffect } from 'react';
 import GithubContext from '../context/github/GithubContext';
 import {useParams} from  'react-router-dom';
 import {Link} from 'react-router-dom';
-import {FaUsers,FaCodepen,FaStore,FaUserFriends,FaAngleLeft,FaAngleRight} from 'react-icons/fa';
+import {FaUsers,FaCodepen,FaStore,FaUserFriends} from 'react-icons/fa';
 import Loading from '../components/layout/Loading'; 
 import RepoList from '../components/repos/RepoList';
 import {getUserAndRepos} from '../context/github/GithubActions';
