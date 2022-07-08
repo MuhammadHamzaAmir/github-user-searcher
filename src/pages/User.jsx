@@ -4,15 +4,26 @@ import {useParams} from  'react-router-dom';
 import {Link} from 'react-router-dom';
 import {FaUsers,FaCodepen,FaStore,FaUserFriends,FaAngleLeft,FaAngleRight} from 'react-icons/fa';
 import Loading from '../components/layout/Loading'; 
+import RepoList from '../components/repos/RepoList';
 
 function User() {
 
-    const {user,getUser,loading} = useContext(GithubContext);
+    const {user,getUser,loading,repos,getUserRepos,getOrgsRepos} = useContext(GithubContext);
 
     const params = useParams();
 
     useEffect(() => {
+
         getUser(params.login);
+        getUserRepos(params.login);
+
+        // @TODO - Get user organizations repos 
+        // const getUserandRepos = async () => {
+        //     await getUser(params.login);
+        //     ((user.type === 'User') ? await getUserRepos(params.login) : await getOrgsRepos(params.login));
+        // }
+
+        // getUserandRepos();
         // eslint-disable-next-line
     }, []);
 
@@ -135,6 +146,8 @@ function User() {
                         </div>
                     </div>
                 </div>
+                <RepoList repos={user.repos_url}/>
+
             </div>
         )
     }
